@@ -1,5 +1,5 @@
-application: trott-tracker
-version: 6
+application: my-radar
+version: 1
 runtime: python27
 api_version: 1
 threadsafe: true
@@ -9,7 +9,7 @@ handlers:
   static_dir: stylesheets
 
 - url: /.*
-  script: trott-tracker.app
+  script: my-radar.app
 
 libraries:
 - name: jinja2
