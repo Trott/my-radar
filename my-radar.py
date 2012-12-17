@@ -2,6 +2,7 @@ import webapp2
 import jinja2
 import os
 import json
+import re
 
 from google.appengine.ext import db
 
@@ -34,7 +35,7 @@ class MainPage(webapp2.RequestHandler):
         scheme = os.environ.get('wsgi.url_scheme', 'http')
 
         template_values = {
-            'tag_id': self.request.get('tag_id'),
+            'tag_id': re.sub(r'\W+', '', self.request.get('tag_id')),
             'hostname': hostname,
             'scheme': scheme,
         }
@@ -44,7 +45,7 @@ class MainPage(webapp2.RequestHandler):
 
 class Tracker(webapp2.RequestHandler):
     def get(self):
-        tag_id = self.request.get('tag')
+        tag_id = re.sub(r'\W+', '', self.request.get('tag'))
         if tag_id != "":
             position = Tag.get_by_key_name(tag_id)
 
@@ -65,7 +66,7 @@ class Tracker(webapp2.RequestHandler):
 
 class Update(webapp2.RequestHandler):
     def post(self):
-        tag_id = self.request.get('tag')
+        tag_id = re.sub(r'\W+', '', self.request.get('tag'))
         latitude = self.request.get('latitude')
         longitude = self.request.get('longitude')
         accuracy = self.request.get('accuracy')
