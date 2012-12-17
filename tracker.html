@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tracker</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link href="/stylesheets/main.css" rel="stylesheet">
+    {% if latitude %}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+    function initialize() {
+      var mapOptions = {
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+      };
+      var map = new google.maps.Map(document.getElementById('map_canvas'),
+        mapOptions);
+
+      var marker = new google.maps.Marker({
+        map: map,
+        icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKAQMAAAC3/F3+AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAANQTFRFALfvPEv6TAAAAAtJREFUCB1jYMAHAAAeAAEBGNlaAAAAAElFTkSuQmCC',
+      });
+
+      updateMap(map, marker, {{ latitude }}, {{ longitude }});
+
+      setInterval(function () {
+        $.ajax({ url: "/get?tag={{ tag_id }}", success: function(data){
+          updateMap(map, marker, data.latitude, data.longitude);
+        }, dataType: "json", timeout: 12000 });
+      }, 15000);
+    }
+
+    function updateMap(map, marker, lat, long) {
+
+      var pos = new google.maps.LatLng(lat,long);
+      marker.setPosition(pos);
+
+      map.setCenter(pos);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    {% endif %}
+  </head>
+  <body>
+    {% if error %}
+    <p>{{ error }}</p>
+    {% else %}
+    <div id="map_canvas"></div>
+    {% endif %}
+  </body>
+</html>

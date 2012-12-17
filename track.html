@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>Tracker</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script>
+      // Try HTML5 geolocation
+      if(navigator.geolocation) {
+        navigator.geolocation.watchPosition(function(position) {
+          data = {
+            tag: "{{ tag_id }}",
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            accuracy: position.coords.accuracy, 
+          };
+          $.ajax({
+            type: 'POST',
+            url: '/update',
+            data: data,
+          });
+        }, function() {
+          alert('Geolocation failed. Bummer.');
+        });
+      } else {
+          // Browser doesn't support Geolocation
+          alert('Your browser doesn\'t support geolocation. Harrumph.');
+        }
+  </script>
+</head>
+<body>
+  {% if tag_id %}
+  <p>Your location is being tracked at <a href="http://{{ hostname }}/track?tag={{ tag_id }}" target="_blank">http://{{ hostname }}/track?tag={{ tag_id }}</a>.</p>
+  <p>To end tracking, close this window.</p>
+  {% else %}
+  <form id="form" action="/" method="post">
+    <div><label>Your Tag:</label></div>
+    <div><input name="tag_id"></input></div>
+    <div><input type="submit" value="Enable Tracking"></div>
+  </form>
+  {% endif %}
+</body>
+</html>

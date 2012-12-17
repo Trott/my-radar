@@ -1,0 +1,16 @@
+application: trott-tracker
+version: 6
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /.*
+  script: trott-tracker.app
+
+libraries:
+- name: jinja2
+  version: latest
