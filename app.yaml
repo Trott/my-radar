@@ -10,6 +10,7 @@ handlers:
 
 - url: /.*
   script: my-radar.app
+  secure: always
 
 libraries:
 - name: jinja2

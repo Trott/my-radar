@@ -1,4 +1,4 @@
 Demo
 ----
 
-http://my-radar.appspot.com/
+https://my-radar.appspot.com/

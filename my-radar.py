@@ -30,9 +30,13 @@ class MainPage(webapp2.RequestHandler):
             hostname = os.environ['HTTP_HOST']
         else:
             hostname = os.environ['SERVER_NAME']
+
+        scheme = os.environ.get('wsgi.url_scheme', 'http')
+
         template_values = {
             'tag_id': self.request.get('tag_id'),
-            'hostname': hostname
+            'hostname': hostname,
+            'scheme': scheme,
         }
         template = jinja_environment.get_template('track.html')
         self.response.out.write(template.render(template_values))
@@ -93,4 +97,4 @@ app = webapp2.WSGIApplication([('/', MainPage),
                                ('/track', Tracker),
                                ('/update', Update),
                                ('/get', GetLocation)],
-                              debug=True)
+                              debug=False)

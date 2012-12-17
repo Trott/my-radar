@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>Tracker</title>
+  <title>My Radar</title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
@@ -32,7 +32,7 @@
 </head>
 <body>
   {% if tag_id %}
-  <p>Your location is being tracked at <a href="http://{{ hostname }}/track?tag={{ tag_id }}" target="_blank">http://{{ hostname }}/track?tag={{ tag_id }}</a>.</p>
+  <p>Your location is being tracked at <a href="{{ scheme }}://{{ hostname }}/track?tag={{ tag_id }}" target="_blank">{{ scheme }}://{{ hostname }}/track?tag={{ tag_id }}</a>.</p>
   <p>To end tracking, close this window.</p>
   {% else %}
   <form id="form" action="/" method="post">
