@@ -24,7 +24,7 @@ input {
   display: block;
 }
 
-input.submit {
+.submit {
   margin:1em auto 1em auto;
 }
 

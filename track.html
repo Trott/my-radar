@@ -35,10 +35,10 @@
   <p>Your location is being tracked at <a href="{{ scheme }}://{{ hostname }}/track?tag={{ tag_id }}" target="_blank">{{ scheme }}://{{ hostname }}/track?tag={{ tag_id }}</a>.</p>
   <p>To end tracking, close this window.</p>
   {% else %}
-  <form id="form" action="/" method="post">
-    <div><label>Your Tag:</label></div>
-    <div><input name="tag_id"></input></div>
-    <div><input type="submit" value="Enable Tracking"></div>
+  <form action="/" method="post">
+    <label for="tag_id">Your Code:</label>
+    <input id="tag_id" autofocus name="tag_id" value="{{ tag_id }}">
+    <input class="submit" type="submit" value="Enable Tracking">
   </form>
   {% endif %}
 </body>
