@@ -11,7 +11,6 @@ jinja_environment = jinja2.Environment(
 
 
 class Tag(db.Model):
-    """Models an individual Guestbook entry with an author, content, and date."""
     latitude = db.FloatProperty()
     longitude = db.FloatProperty()
     accuracy = db.IntegerProperty()
