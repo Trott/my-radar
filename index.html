@@ -9,9 +9,9 @@
 <body>
 
   <form action="/" method="post">
-    <div><label>Your Tag:</label></div>
-    <div><input autofocus name="tag_id" value="{{ tag_id }}"></div>
-    <div><input type="submit" value="Enable Tracking"></div>
+    <label for="tag_id">Your Code:</label>
+    <input id="tag_id" autofocus name="tag_id" value="{{ tag_id }}">
+    <input class="submit" type="submit" value="Enable Tracking">
   </form>
 
 </body>
