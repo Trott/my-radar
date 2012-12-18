@@ -4,12 +4,12 @@ My-Radar
 What Is It?
 -----------
 
-It's a Google App Engine app that allows you to be tracked on a map.
+It's a Google App Engine web app that lets you allow others to track you on a map.
 
 Like Google Latitude Or Find My Friends?
 ----------------------------------------
 
-Yes, but without having to install an app?
+Yes, but without having to install an app.
 
 Why?! Why not just use the apps?
 --------------------------------
