@@ -11,8 +11,8 @@ Like Google Latitude Or Find My Friends?
 
 Yes, but without having to install an app.
 
-Why?! Why not just use the apps?
---------------------------------
+Why?! Why not just use the existing apps?
+-----------------------------------------
 
 Excellent question! Here are some reasons someone might want to use this application rather than other available apps:
 
@@ -20,7 +20,7 @@ Excellent question! Here are some reasons someone might want to use this applica
 
 * Privacy. Related to anonymity, of course.
 
-* No need to install an app. It's just a web site.
+* No need to install an app. It's just a web site. Will work on [anything that supports HTML5 Geolocation API](http://caniuse.com/#feat=geolocation).
 
 How does it work?
 -----------------
